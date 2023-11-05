@@ -1,10 +1,13 @@
-import Nav from "../../SharedComponents/Nav";
+// import Nav from "../../SharedComponents/Nav";
+
+import Banner from "./Banner";
 
 
 const Home = () => {
   return (
     <div className="w-full">
-      <Nav></Nav>
+     {/* <h1>this is Home</h1> */}
+     <Banner></Banner>
     </div>
   );
 };

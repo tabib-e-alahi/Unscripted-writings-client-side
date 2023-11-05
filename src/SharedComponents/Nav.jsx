@@ -1,24 +1,37 @@
 "use client";
 
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { NavLink } from "react-router-dom";
 const Nav = () => {
   const navLinks = (
     <>
-      <Navbar.Link className="lg:text-base lg:mr-10" href="#">
-        Home
-      </Navbar.Link>
-      <Navbar.Link className="lg:text-base lg:mr-10" href="#">
-        About
-      </Navbar.Link>
-      <Navbar.Link className="lg:text-base lg:mr-10" href="#">
-        Services
-      </Navbar.Link>
-      <Navbar.Link className="lg:text-base lg:mr-10" href="#">
-        Pricing
-      </Navbar.Link>
-      <Navbar.Link className="lg:text-base lg:mr-10" href="#">
-        Contact
-      </Navbar.Link>
+      <NavLink to="/">
+        <Navbar.Link  className="lg:text-base lg:mr-10" href="#">
+          Home
+        </Navbar.Link>
+      </NavLink>
+
+      <NavLink to="/app">
+        <Navbar.Link  className="lg:text-base lg:mr-10" href="#">
+          About
+        </Navbar.Link>
+      </NavLink>
+
+      <NavLink>
+        <Navbar.Link className="lg:text-base lg:mr-10" href="#">
+          Services
+        </Navbar.Link>
+      </NavLink>
+      <NavLink>
+        <Navbar.Link className="lg:text-base lg:mr-10" href="#">
+          Pricing
+        </Navbar.Link>
+      </NavLink>
+      <NavLink>
+        <Navbar.Link className="lg:text-base lg:mr-10" href="#">
+          Contact
+        </Navbar.Link>
+      </NavLink>
     </>
   );
 
@@ -61,16 +74,13 @@ const Nav = () => {
         </span> */}
       </Navbar.Brand>
       <div className="flex md:hidden">
-      {dropMenu}
-      <Navbar.Toggle />
+        {dropMenu}
+        <Navbar.Toggle />
       </div>
       <hr className="hidden md:flex w-full h-2" />
 
-      <div className="w-full md:flex md:justify-evenly md:mb-10 md:mt-2">
-        <div className="hidden md:flex  md:order-2 ">
-            {dropMenu}
-          {/* <Navbar.Toggle className="hidden md:flex" /> */}
-        </div>
+      <div className="w-full md:flex md:justify-evenly  md:mt-2">
+        <div className="hidden md:flex  md:order-2 ">{dropMenu}</div>
 
         <Navbar.Collapse className="">{navLinks}</Navbar.Collapse>
       </div>

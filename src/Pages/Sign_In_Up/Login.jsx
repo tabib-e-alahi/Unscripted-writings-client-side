@@ -1,7 +1,7 @@
 "use client";
 import { Button, Card, Label } from "flowbite-react";
 import SocialLinks from "../../SharedComponents/SocialLinks";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { loggedIn } = useContext(AuthContext);
   const [signInError, setSignInError] = useState("");
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ const Login = () => {
           text: "Now Enjoy Yourself",
           icon: "success"
         });
+        navigate(location?.state ? location?.state  : '/')
       })
       .catch((error) => {console.error(error)
         setSignInError(

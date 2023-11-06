@@ -1,7 +1,7 @@
 "use client";
 import { Button, Card, Label } from "flowbite-react";
 import SocialLinks from "../../SharedComponents/SocialLinks";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
@@ -10,6 +10,8 @@ import Swal from "sweetalert2";
 const Register = () => {
     const {createUser} = useContext(AuthContext)
     const [registerError, setRegisterError] = useState("");
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleRegister = e =>{
         e.preventDefault()
@@ -51,6 +53,7 @@ const Register = () => {
             text: "Thanks for registering",
             icon: "success"
           });
+          navigate(location?.state ? location?.state  : '/')
          
       })
       .catch((error) => {

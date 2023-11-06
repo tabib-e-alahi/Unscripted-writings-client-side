@@ -10,11 +10,13 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Sign_In_Up/Login";
 import Register from "./Pages/Sign_In_Up/Register";
 import AuthProvider from "./AuthProvider/AuthProvider";
+import Errorpage from "./Pages/ErrorPage/Errorpage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<Errorpage></Errorpage>,
     children: [
       {
         path: "/",

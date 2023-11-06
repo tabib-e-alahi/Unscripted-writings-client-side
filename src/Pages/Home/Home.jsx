@@ -1,6 +1,6 @@
-// import Nav from "../../SharedComponents/Nav";
 
 import Banner from "./Banner";
+import RecentBlogs from "./RecentBlogs/RecentBlogs";
 
 
 const Home = () => {
@@ -8,6 +8,7 @@ const Home = () => {
     <div className="w-full">
      {/* <h1>this is Home</h1> */}
      <Banner></Banner>
+    <RecentBlogs></RecentBlogs>
     </div>
   );
 };

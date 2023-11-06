@@ -3,9 +3,12 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLinks = () => {
   const { googleSignIn } = useContext(AuthContext);
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const handleGoogleLogin = () => {
     googleSignIn()
@@ -16,6 +19,7 @@ const SocialLinks = () => {
           text: "Now Enjoy Yourself",
           icon: "success"
         });
+        navigate(location?.state ? location?.state  : '/')
       })
       .catch((error) => console.log(error.message));
   };

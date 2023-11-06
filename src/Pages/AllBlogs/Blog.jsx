@@ -1,17 +1,10 @@
-import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 
-const RecentBlog = ({ blog }) => {
-  console.log(blog);
-  const { category, title, image, short_description, posted_time } = blog;
+import PropTypes from 'prop-types';
 
-  return (
-    <motion.div
-      className="box"
-      whileHover={{ scale: 1.1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-    >
-      <div className="relative card bg-white">
+const Blog = ({blog}) => {
+    const { category, title, image, short_description, posted_time } = blog;
+    return (
+        <div className="relative card bg-white">
         <figure className="h-80">
           <img className="w-full h-full" src={image} alt="Shoes" />
         </figure>
@@ -42,12 +35,11 @@ const RecentBlog = ({ blog }) => {
           </div>
         </div>
       </div>
-    </motion.div>
-  );
+    );
 };
 
-RecentBlog.propTypes = {
-  blog: PropTypes.object,
+Blog.propTypes = {
+    blog:PropTypes.object
 };
 
-export default RecentBlog;
+export default Blog;

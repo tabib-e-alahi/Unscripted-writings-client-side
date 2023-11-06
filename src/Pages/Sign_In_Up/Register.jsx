@@ -2,8 +2,14 @@
 import { Button, Card, Label } from "flowbite-react";
 import SocialLinks from "../../SharedComponents/SocialLinks";
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext)
+    const [registerError, setRegisterError] = useState("");
 
     const handleRegister = e =>{
         e.preventDefault()
@@ -16,9 +22,40 @@ const Register = () => {
 
         const newUser = {
             name,profileUrl,email,password
-        } 
-
+        }
         console.log(newUser);
+        
+        setRegisterError("");
+        
+
+    if (!/^(?=.*[A-Z])(?=.*\W)(?=.*\d).{6,}$/.test(password)) {
+      setRegisterError(
+        "Password is invalid. It must have at least 6 characters,one numeric character, one uppercase letter, and one special character."
+      );
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: profileUrl,
+        })
+          .then((result) => {
+            console.log(result.user);
+           
+          })
+          .catch((error) => console.log(error));
+          Swal.fire({
+            title: "Registration Completed Successfully",
+            text: "Thanks for registering",
+            icon: "success"
+          });
+         
+      })
+      .catch((error) => {
+        setRegisterError(error.message)
+      });
 
     }
 
@@ -86,9 +123,17 @@ const Register = () => {
                 placeholder="Enter your password here..."
                 required
               />
+              <label className="label">
+                  {registerError && (
+                    <p className="text-sm text-red-400 font-medium text-center">
+                      {registerError}
+                    </p>
+                  )}
+                </label>
             </div>
+            
           </div>
-          <Button type="submit">Login</Button>
+          <Button type="submit">Register</Button>
         </form>
         <div className="flex items-center justify-center gap-1 text-center mt-4">
           <Label className="" value="Already have an account?" />

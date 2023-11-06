@@ -1,39 +1,53 @@
 "use client";
 
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const Nav = () => {
   const navLinks = (
     <>
       <NavLink to="/">
-        <li  className="lg:text-base lg:mr-10" href="#">
+        <li className="lg:text-base lg:mr-10" href="#">
           Home
         </li>
       </NavLink>
 
       <NavLink to="/app">
-        <li  className="lg:text-base lg:mr-10" href="#">
-          About
+        <li className="lg:text-base lg:mr-10" href="#">
+        Add Blog
         </li>
       </NavLink>
 
       <NavLink>
         <li className="lg:text-base lg:mr-10" href="#">
-          Services
+        All blogs
         </li>
       </NavLink>
       <NavLink>
         <li className="lg:text-base lg:mr-10" href="#">
-          Pricing
+        Featured Blogs
         </li>
       </NavLink>
       <NavLink>
         <li className="lg:text-base lg:mr-10" href="#">
-          Contact
+        Wishlist
         </li>
       </NavLink>
     </>
   );
+
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  /* step-7.6 */
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => console.error(error));
+  };
 
   const dropMenu = (
     <Dropdown
@@ -42,22 +56,22 @@ const Nav = () => {
       label={
         <Avatar
           alt="User settings"
-          img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+          img={user?.photoURL}
           rounded
         />
       }
     >
       <Dropdown.Header>
-        <span className="block text-sm">Bonnie Green</span>
+        <span className="block text-sm">{user?.displayName}</span>
         <span className="block truncate text-sm font-medium">
-          name@flowbite.com
+         {user?.email}
         </span>
       </Dropdown.Header>
       {/* <Dropdown.Item>Dashboard</Dropdown.Item>
   <Dropdown.Item>Settings</Dropdown.Item>
   <Dropdown.Item>Earnings</Dropdown.Item> */}
       <Dropdown.Divider></Dropdown.Divider>
-      <Dropdown.Item>Sign out</Dropdown.Item>
+      <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
     </Dropdown>
   );
 
@@ -80,11 +94,16 @@ const Nav = () => {
       <hr className="hidden md:flex w-full h-2" />
 
       <div className="w-full md:flex md:justify-evenly items-center md:mt-2">
-        <Navbar.Collapse  className="text-center z-10">{navLinks}</Navbar.Collapse>
-         {/* <div className="hidden md:flex  md:order-2 ">{dropMenu}</div> */}
-         <Link to='/login'>
-         <Button color="gray">Login</Button>
-         </Link>
+        <Navbar.Collapse className="text-center z-10">
+          {navLinks}
+        </Navbar.Collapse>
+        {user ? (
+          <div className="hidden md:flex  md:order-2 ">{dropMenu}</div>
+        ) : (
+          <Link to="/login">
+            <Button color="gray">Login</Button>
+          </Link>
+        )}
       </div>
     </Navbar>
   );

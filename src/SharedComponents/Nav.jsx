@@ -19,7 +19,7 @@ const Nav = () => {
         </li>
       </NavLink>
 
-      <NavLink>
+      <NavLink to='/allBlogs'>
         <li className="lg:text-base lg:mr-10" href="#">
         All blogs
         </li>

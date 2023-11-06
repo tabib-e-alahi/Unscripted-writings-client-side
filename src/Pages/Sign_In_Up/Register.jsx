@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { format } from "date-fns";
 
 const Register = () => {
     const {createUser} = useContext(AuthContext)
@@ -22,6 +23,9 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        const time = new Date()
+        const formattedTime = format(time, "EEE LLL dd yyyy hh:mma");
+        console.log('Time----: ',formattedTime);
         const newUser = {
             name,profileUrl,email,password
         }

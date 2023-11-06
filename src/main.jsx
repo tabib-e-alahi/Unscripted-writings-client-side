@@ -11,6 +11,7 @@ import Login from "./Pages/Sign_In_Up/Login";
 import Register from "./Pages/Sign_In_Up/Register";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Errorpage from "./Pages/ErrorPage/Errorpage";
+import AllBlogs from "./Pages/AllBlogs/AllBlogs";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/allBlogs",
+        element: <AllBlogs></AllBlogs>,
+        loader: () =>fetch('http://localhost:5000/blog')
       },
       {
         path: "/login",

@@ -6,7 +6,7 @@ const RecentBlogs = () => {
     const [blogs, setBlogs] = useState([]);
 
    useEffect(() =>{
-    axios.get('http://localhost:5000/blog')
+    axios.get('http://localhost:5000/blog/recent')
     .then(res => {
         // console.log(res.data);
         setBlogs(res.data)
@@ -16,7 +16,7 @@ const RecentBlogs = () => {
     // console.log(blogs);
     return (
         <div>
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 ">
+           <div className="max-w-4xl mx-auto grid grid-cols-2   gap-8 ">
            {
                 blogs.map(blog => <RecentBlog key={blog._id} blog={blog}></RecentBlog>)
             }

@@ -1,49 +1,35 @@
+
 import PropTypes from "prop-types";
+
 
 const RecentBlog = ({ blog }) => {
   console.log(blog);
-  const {category,title,image,short_description,posted_time,author_info} = blog
-  const {author_name,author_picture} = author_info
+  const {
+    category,
+    title,
+    image,
+    short_description,
+    posted_time,
+   
+  } = blog;
+  
   return (
-    <div>
-      <div className="w-full  px-4">
-        <div className="  ">
-          <div className="rounded overflow-hidden ">
-            <img
-              src={image}
-              alt="image"
-              className="w-full"
-            />
-          </div>
-          <div>
-            <span className="text-black">
-              {author_name}
-            </span>
-            <h3>
-              <a
-                href="javascript:void(0)"
-                className="
-                        font-semibold
-                        text-xl
-                        sm:text-2xl
-                        lg:text-xl
-                        xl:text-2xl
-                        mb-4
-                        inline-block
-                        text-dark
-                        hover:text-primary
-                        "
-              >
-                {title}
-              </a>
-            </h3>
-            <p className="text-base text-body-color">
-              {short_description}
-            </p>
-          </div>
-        </div>
+    <div className="card bg-white">
+    <figure className="h-80"><img  className="h-full" src={image} alt="Shoes" /></figure>
+    <div className="card-body">
+    <div className="badge badge-outline">{category}</div>
+      <h2 className="card-title font-bold">
+        {title}
+        
+      </h2>
+      <p className="text-ellipsis text-xs text-justify overflow-hidden  ">{short_description}</p>
+      <div className="card-actions justify-between">
+        <p className="font-semibold">{posted_time}</p>
+        <button className="tooltip" data-tip="See Details"><img className="w-6 " src="https://i.ibb.co/2SbZM8h/menu.png" alt="" /></button>
+        <button className="tooltip" data-tip="Add to Wishlist"><img className="w-6 " src="https://i.ibb.co/KsL1pzQ/wishlist.png" alt="" /></button>
       </div>
     </div>
+  </div>
   );
 };
 

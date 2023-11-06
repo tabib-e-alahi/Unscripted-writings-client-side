@@ -1,36 +1,36 @@
 "use client";
 
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { NavLink } from "react-router-dom";
+import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
+import { Link, NavLink } from "react-router-dom";
 const Nav = () => {
   const navLinks = (
     <>
       <NavLink to="/">
-        <Navbar.Link  className="lg:text-base lg:mr-10" href="#">
+        <li  className="lg:text-base lg:mr-10" href="#">
           Home
-        </Navbar.Link>
+        </li>
       </NavLink>
 
       <NavLink to="/app">
-        <Navbar.Link  className="lg:text-base lg:mr-10" href="#">
+        <li  className="lg:text-base lg:mr-10" href="#">
           About
-        </Navbar.Link>
+        </li>
       </NavLink>
 
       <NavLink>
-        <Navbar.Link className="lg:text-base lg:mr-10" href="#">
+        <li className="lg:text-base lg:mr-10" href="#">
           Services
-        </Navbar.Link>
+        </li>
       </NavLink>
       <NavLink>
-        <Navbar.Link className="lg:text-base lg:mr-10" href="#">
+        <li className="lg:text-base lg:mr-10" href="#">
           Pricing
-        </Navbar.Link>
+        </li>
       </NavLink>
       <NavLink>
-        <Navbar.Link className="lg:text-base lg:mr-10" href="#">
+        <li className="lg:text-base lg:mr-10" href="#">
           Contact
-        </Navbar.Link>
+        </li>
       </NavLink>
     </>
   );
@@ -62,27 +62,29 @@ const Nav = () => {
   );
 
   return (
-    <Navbar rounded className="flex flex-col w-full md:pt-10">
+    <Navbar rounded className="flex flex-col w-full md:pt-10 mb-4 md:mb-0">
       <Navbar.Brand className="md:mx-auto md:mb-8 md:pt-6">
         <img
           src="https://i.ibb.co/fv6Sjs8/Screenshot-2023-11-06-023121-removebg-preview.png"
-          className="mr-3  sm:h-9 md:h-14"
+          className="mr-3 h-9 md:h-14"
           alt="Flowbite React Logo"
         />
         {/* <span className="self-center whitespace-nowrap text-4xl font-semibold dark:text-white">
           Life Unscripted
         </span> */}
       </Navbar.Brand>
-      <div className="flex md:hidden">
+      <div className="flex gap-2 md:hidden">
         {dropMenu}
-        <Navbar.Toggle />
+        <Navbar.Toggle className="" />
       </div>
       <hr className="hidden md:flex w-full h-2" />
 
-      <div className="w-full md:flex md:justify-evenly  md:mt-2">
-        <div className="hidden md:flex  md:order-2 ">{dropMenu}</div>
-
-        <Navbar.Collapse className="">{navLinks}</Navbar.Collapse>
+      <div className="w-full md:flex md:justify-evenly items-center md:mt-2">
+        <Navbar.Collapse  className="text-center z-10">{navLinks}</Navbar.Collapse>
+         {/* <div className="hidden md:flex  md:order-2 ">{dropMenu}</div> */}
+         <Link to='/login'>
+         <Button color="gray">Login</Button>
+         </Link>
       </div>
     </Navbar>
   );

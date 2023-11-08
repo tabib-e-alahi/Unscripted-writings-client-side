@@ -1,9 +1,10 @@
 "use client";
-
+import './Nav.css'
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { DropdownItem } from 'flowbite-react/lib/esm/components/Dropdown/DropdownItem';
 const Nav = () => {
   const navLinks = (
     <>
@@ -24,12 +25,12 @@ const Nav = () => {
         All blogs
         </li>
       </NavLink>
-      <NavLink>
+      <NavLink to='/featuredList'>
         <li className="lg:text-base lg:mr-10" href="#">
         Featured Blogs
         </li>
       </NavLink>
-      <NavLink>
+      <NavLink to='/wishList'>
         <li className="lg:text-base lg:mr-10" href="#">
         Wishlist
         </li>
@@ -67,11 +68,8 @@ const Nav = () => {
          {user?.email}
         </span>
       </Dropdown.Header>
-      {/* <Dropdown.Item>Dashboard</Dropdown.Item>
-  <Dropdown.Item>Settings</Dropdown.Item>
-  <Dropdown.Item>Earnings</Dropdown.Item> */}
       <Dropdown.Divider></Dropdown.Divider>
-      <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
+      <DropdownItem onClick={handleSignOut}>Sign out</DropdownItem>
     </Dropdown>
   );
 
@@ -94,7 +92,7 @@ const Nav = () => {
       <hr className="hidden md:flex w-full h-2" />
 
       <div className="w-full md:flex md:justify-evenly items-center md:mt-2">
-        <Navbar.Collapse className="text-center z-10">
+        <Navbar.Collapse className="text-center z-10 custom-class">
           {navLinks}
         </Navbar.Collapse>
         {user ? (

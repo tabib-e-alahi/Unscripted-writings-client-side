@@ -16,7 +16,7 @@ const RecentBlogs = () => {
     // console.log(blogs);
     return (
         <div>
-           <div className="max-w-4xl mx-auto grid grid-cols-2   gap-8 ">
+           <div className="max-w-4xl mx-auto grid grid-cols-2   gap-8 mb-20 ">
            {
                 blogs.map(blog => <RecentBlog key={blog._id} blog={blog}></RecentBlog>)
             }

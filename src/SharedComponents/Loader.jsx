@@ -1,12 +1,10 @@
 import { BallTriangle } from "react-loader-spinner";
-
+// import Skeleton from 'react-loading-skeleton';
 
 
 
 const Loader = () => {
   return (
-  
-   
     <BallTriangle
     height={500}
     width={500}
@@ -17,8 +15,7 @@ const Loader = () => {
     wrapperStyle=""
     visible={true}
   />
-   
-  );
+  )
 };
 
 export default Loader;

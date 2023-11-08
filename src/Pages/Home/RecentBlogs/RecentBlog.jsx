@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
 const RecentBlog = ({ blog }) => {
-  console.log(blog);
+  // console.log(blog);
   const { category, title, image, short_description, posted_time } = blog;
 
   return (
@@ -15,12 +15,12 @@ const RecentBlog = ({ blog }) => {
         <figure className="h-80">
           <img className="w-full h-full" src={image} alt="Shoes" />
         </figure>
-        <div className="card-body">
-          <div className="absolute top-4 left-2 text-white font-bold p-4 badge badge-error">
+        <div className="card-body ">
+          <div className="absolute top-4 left-2 text-white font-bold p-4 badge badge-error flex-grow-0">
             {category}
           </div>
-          <h2 className="card-title font-bold">{title}</h2>
-          <p className="text-ellipsis text-xs text-justify overflow-hidden  ">
+          <h2 className=" font-bold">{title}</h2>
+          <p className=" text-xs text-justify h-20  overflow-clip">
             {short_description}
           </p>
           <div className="card-actions justify-between">

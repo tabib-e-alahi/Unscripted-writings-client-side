@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.17",
     "axios": "^1.6.0",
     "date-fns": "^2.30.0",
     "firebase": "^10.5.2",
@@ -23,6 +26,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-loader-spinner": "^5.4.5",
+    "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.18.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.9.0",

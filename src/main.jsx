@@ -12,12 +12,15 @@ import Register from "./Pages/Sign_In_Up/Register";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Errorpage from "./Pages/ErrorPage/Errorpage";
 import AllBlogs from "./Pages/AllBlogs/AllBlogs";
+import WishList from "./Pages/WishList/WishList";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+// import { SkeletonTheme } from "react-loading-skeleton";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<Errorpage></Errorpage>,
+    errorElement: <Errorpage></Errorpage>,
     children: [
       {
         path: "/",
@@ -25,8 +28,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/allBlogs",
-        element: <AllBlogs></AllBlogs>,
-        loader: () =>fetch('http://localhost:5000/blog')
+        element: (
+          <PrivateRoute>
+            <AllBlogs></AllBlogs>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/blog"),
+      },
+      {
+        path: "/allBlogs",
+        element: (
+          <PrivateRoute>
+            <WishList></WishList>
+          </PrivateRoute>
+        ),
+        // loader: () =>fetch('http://localhost:5000/blog')
       },
       {
         path: "/login",

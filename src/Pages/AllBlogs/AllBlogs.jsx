@@ -1,16 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import Blog from "./Blog";
 import Search from "./Search";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-// import { Skeleton } from "@mui/material";
+import { useState } from "react";
+
 
 const AllBlogs = () => {
   const data = useLoaderData();
   const [blogs, setBlogs] = useState(data);
-  const { user } = useContext(AuthContext);
-  console.log(user.email);
-//   const loading = true
+
+
 
   const handleBlogSubmit = (e) => {
     e.preventDefault();

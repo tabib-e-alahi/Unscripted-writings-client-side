@@ -1,16 +1,21 @@
 
 
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Blog = ({blog}) => {
   // console.log(blog);
     const { category, title, image, short_description, posted_time } = blog;
+    const {user} = useContext(AuthContext)
+blog['user_email'] = user.email;
 
     const handleWishlistAdd = () =>{
      
       delete blog._id;
-      console.log(typeof blog);
+      console.log(blog);
       fetch('http://localhost:5000/wishlist',{
         method: 'POST', 
         headers: {
@@ -19,7 +24,15 @@ const Blog = ({blog}) => {
         body: JSON.stringify(blog)
       })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        if(data.insertedId){
+          Swal.fire({
+            title: "Item Added To Your Wishlist Successful",
+            text: "You can see from wishlist anytime",
+            icon: "success"
+          });
+        }
+      })
    
     }
 

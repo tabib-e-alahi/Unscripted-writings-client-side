@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/blog"),
       },
       {
-        path: "/allBlogs",
+        path: "/wishlist",
         element: (
           <PrivateRoute>
             <WishList></WishList>

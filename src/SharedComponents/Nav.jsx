@@ -1,11 +1,14 @@
 "use client";
-import './Nav.css'
+import "./Nav.css";
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { DropdownItem } from 'flowbite-react/lib/esm/components/Dropdown/DropdownItem';
+import { DropdownItem } from "flowbite-react/lib/esm/components/Dropdown/DropdownItem";
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
   const navLinks = (
     <>
       <NavLink to="/">
@@ -13,33 +16,32 @@ const Nav = () => {
           Home
         </li>
       </NavLink>
-
-      <NavLink to="/app">
+      <NavLink to="/allBlogs">
         <li className="lg:text-base lg:mr-10" href="#">
-        Add Blog
+          All blogs
         </li>
       </NavLink>
-
-      <NavLink to='/allBlogs'>
-        <li className="lg:text-base lg:mr-10" href="#">
-        All blogs
-        </li>
-      </NavLink>
-      <NavLink to='/featuredList'>
-        <li className="lg:text-base lg:mr-10" href="#">
-        Featured Blogs
-        </li>
-      </NavLink>
-      <NavLink to='/wishList'>
-        <li className="lg:text-base lg:mr-10" href="#">
-        Wishlist
-        </li>
-      </NavLink>
+      {user && (
+        <>
+          <NavLink to="/app">
+            <li className="lg:text-base lg:mr-10" href="#">
+              Add Blog
+            </li>
+          </NavLink>
+          <NavLink to="/featuredList">
+            <li className="lg:text-base lg:mr-10" href="#">
+              Featured Blogs
+            </li>
+          </NavLink>
+          <NavLink to="/wishList">
+            <li className="lg:text-base lg:mr-10" href="#">
+              Wishlist
+            </li>
+          </NavLink>
+        </>
+      )}
     </>
   );
-
-  const { user, logOut } = useContext(AuthContext);
-  console.log(user);
 
   /* step-7.6 */
   const handleSignOut = () => {
@@ -54,18 +56,12 @@ const Nav = () => {
     <Dropdown
       arrowIcon={false}
       inline
-      label={
-        <Avatar
-          alt="User settings"
-          img={user?.photoURL}
-          rounded
-        />
-      }
+      label={<Avatar alt="User settings" img={user?.photoURL} rounded />}
     >
       <Dropdown.Header>
         <span className="block text-sm">{user?.displayName}</span>
         <span className="block truncate text-sm font-medium">
-         {user?.email}
+          {user?.email}
         </span>
       </Dropdown.Header>
       <Dropdown.Divider></Dropdown.Divider>

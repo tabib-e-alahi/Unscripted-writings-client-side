@@ -14,6 +14,7 @@ import Errorpage from "./Pages/ErrorPage/Errorpage";
 import AllBlogs from "./Pages/AllBlogs/AllBlogs";
 import WishList from "./Pages/WishList/WishList";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import BlogDetails from "./Pages/BlogDetails/BlogDetails";
 // import { SkeletonTheme } from "react-loading-skeleton";
 
 const router = createBrowserRouter([
@@ -40,6 +41,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <WishList></WishList>
+          </PrivateRoute>
+        ),
+        // loader: () =>fetch('http://localhost:5000/blog')
+      },
+      {
+        path: "/blogDetails/:id",
+        element: (
+          <PrivateRoute>
+            <BlogDetails></BlogDetails>
           </PrivateRoute>
         ),
         // loader: () =>fetch('http://localhost:5000/blog')

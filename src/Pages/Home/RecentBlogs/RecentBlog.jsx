@@ -3,43 +3,42 @@ import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const RecentBlog = ({ blog }) => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   // console.log(blog);
-  const { category, title, image, short_description, posted_time } = blog;
+  const { _id, category, title, image, short_description, posted_time } = blog;
 
-  const handleWishlistAdd = () =>{
-   
-     if(!user){
-      return  Swal.fire({
+  const handleWishlistAdd = () => {
+    if (!user) {
+      return Swal.fire({
         title: "You've to login first",
         text: "Go to the login w",
-        icon: "error"
+        icon: "error",
       });
-     }
+    }
     delete blog._id;
-    blog['user_email'] = user.email
+    blog["user_email"] = user.email;
     console.log(blog);
-    fetch('http://localhost:5000/wishlist',{
-      method: 'POST', 
+    fetch("http://localhost:5000/wishlist", {
+      method: "POST",
       headers: {
-          'content-type': 'application/json'
-      }, 
-      body: JSON.stringify(blog)
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(blog),
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.insertedId){
-        Swal.fire({
-          title: "Item Added To  Wishlist",
-          text: "You can see from wishlist anytime",
-          icon: "success"
-        });
-      }
-    })
- 
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Item Added To  Wishlist",
+            text: "You can see from wishlist anytime",
+            icon: "success",
+          });
+        }
+      });
+  };
 
   return (
     <motion.div
@@ -61,14 +60,20 @@ const RecentBlog = ({ blog }) => {
           </p>
           <div className="card-actions justify-between">
             <p className="font-semibold">{posted_time}</p>
-            <button className="tooltip" data-tip="See Details">
-              <img
-                className="w-6 "
-                src="https://i.ibb.co/2SbZM8h/menu.png"
-                alt=""
-              />
-            </button>
-            <button className="tooltip" data-tip="Add to Wishlist" onClick={handleWishlistAdd}>
+            <Link to={`/blogDetails/${_id}`}>
+              <button className="tooltip" data-tip="See Details">
+                <img
+                  className="w-6 "
+                  src="https://i.ibb.co/2SbZM8h/menu.png"
+                  alt=""
+                />
+              </button>
+            </Link>
+            <button
+              className="tooltip"
+              data-tip="Add to Wishlist"
+              onClick={handleWishlistAdd}
+            >
               <img
                 className="w-6 "
                 src="https://i.ibb.co/KsL1pzQ/wishlist.png"

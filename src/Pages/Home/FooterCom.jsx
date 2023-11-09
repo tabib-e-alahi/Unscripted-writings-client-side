@@ -15,7 +15,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const FooterCom = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div className="">
+    <div className="mt-16">
       <Footer container className="bg-[#f1f2f3]">
         <div className="w-full">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">

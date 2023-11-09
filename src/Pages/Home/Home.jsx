@@ -1,5 +1,5 @@
 import Banner from "./Banner";
-import FooterCom from "./FooterCom";
+
 import Newsletter from "./Newsletter";
 import RecentBlogs from "./RecentBlogs/RecentBlogs";
 
@@ -12,7 +12,7 @@ const Home = () => {
       <RecentBlogs></RecentBlogs>
       <Newsletter></Newsletter>
 
-      <FooterCom></FooterCom>
+      
     </div>
   );
 };

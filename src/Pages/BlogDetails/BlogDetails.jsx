@@ -1,6 +1,8 @@
 import { Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CommentBox from "../../SharedComponents/CommentBox";
+import CommentSection from "./CommentSection";
 
 const BlogDetails = () => {
  
@@ -39,10 +41,11 @@ const BlogDetails = () => {
   } = blog;
   const paragraphs = long_description.split('.');
 
-  const {author_name, author_picture, author_email,authon_designation} = author_info
+  const {author_name, author_picture, author_email,author_designation} = author_info
 
   return (
-    <div className=" max-w-7xl mx-auto pt-10  grid grid-cols-3">
+    <div className=" max-w-7xl mx-auto pt-10  grid grid-cols-3 gap-10">
+      <div className="col-span-2">
       <main className="col-span-2 pt-8 pb-16 lg:pt-0 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
           <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
@@ -62,7 +65,7 @@ const BlogDetails = () => {
                     >
                       {author_name}
                     </a>
-                    <p className="text-base text-gray-500 dark:text-gray-400">{authon_designation}</p>
+                    <p className="text-base text-gray-500 dark:text-gray-400">{author_designation}</p>
                     <p className="text-base text-gray-500 dark:text-gray-400"><time  dateTime={posted_time} title={posted_time}>{posted_time}</time></p>
                   </div>
                 </div>
@@ -91,8 +94,10 @@ const BlogDetails = () => {
           </article>
         </div>
       </main>
+      <CommentBox key={_id} blog_id={_id} author_email={author_email}></CommentBox>
+      </div>
       <div>
-        <h1>Commment section</h1>
+        <CommentSection key={_id} blog_id={_id}></CommentSection>
       </div>
     </div>
   );

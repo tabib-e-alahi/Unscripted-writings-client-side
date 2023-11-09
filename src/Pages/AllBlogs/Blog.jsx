@@ -11,8 +11,15 @@ const Blog = ({ blog }) => {
   blog["user_email"] = user.email;
 
   const handleWishlistAdd = () => {
+    if (!user) {
+      return Swal.fire({
+        title: "You've to login first",
+        text: "Go to the login w",
+        icon: "error",
+      });
+    }
     delete blog._id;
-    console.log(blog);
+    // console.log(blog);
     fetch("http://localhost:5000/wishlist", {
       method: "POST",
       headers: {
@@ -32,7 +39,7 @@ const Blog = ({ blog }) => {
       });
   };
 
-  console.log();
+  // console.log();
 
   return (
     <div className="relative card rounded bg-white lg:first:col-span-2  ">

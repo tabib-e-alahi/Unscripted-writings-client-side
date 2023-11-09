@@ -21,20 +21,7 @@ const Search = ({handleCategoryForm,handleBlogSubmit}) => {
     </>
   );
 
-  // const handleBlogSubmit = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const name = form.name.value;
 
-  //   console.log(name);
-  // };
-
-  // const handleCategoryForm = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target);
-  //   const category = formData.get("category");
-  //   console.log(category);
-  // };
 
   return (
     <div className="flex gap-4 items-center">

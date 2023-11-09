@@ -23,7 +23,7 @@ const Nav = () => {
       </NavLink>
       {user && (
         <>
-          <NavLink to="/app">
+          <NavLink to="/addBlog">
             <li className="lg:text-base lg:mr-10" href="#">
               Add Blog
             </li>

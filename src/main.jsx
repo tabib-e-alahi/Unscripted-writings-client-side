@@ -15,6 +15,8 @@ import AllBlogs from "./Pages/AllBlogs/AllBlogs";
 import WishList from "./Pages/WishList/WishList";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import BlogDetails from "./Pages/BlogDetails/BlogDetails";
+import AddBlog from "./Pages/AddBlog/AddBlog";
+import UpdateBlog from "./Pages/UpdateBlog/UpdateBlog";
 // import { SkeletonTheme } from "react-loading-skeleton";
 
 const router = createBrowserRouter([
@@ -29,12 +31,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/allBlogs",
+        element: <AllBlogs></AllBlogs>,
+        loader: () => fetch("http://localhost:5000/blog"),
+      },
+      {
+        path: "/addBlog",
         element: (
           <PrivateRoute>
-            <AllBlogs></AllBlogs>
+            <AddBlog></AddBlog>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/blog"),
+      },
+      {
+        path: "/updateBlog/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateBlog></UpdateBlog>
+          </PrivateRoute>
+        ),
+        // loader: async({params}) => await fetch(`http://localhost:5000/blog/${params.id}`)
       },
       {
         path: "/wishlist",

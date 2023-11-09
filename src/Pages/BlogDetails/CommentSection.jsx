@@ -5,7 +5,7 @@ import CommentCard from './CommentCard';
 
 const CommentSection = ({blog_id}) => {
     const [comments, setComments] = useState([])
-    console.log(blog_id);
+    // console.log(blog_id);
     fetch(`http://localhost:5000/comments?blog_id=${blog_id}`)
         .then((res) => res.json())
         .then((data) => {

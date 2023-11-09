@@ -11,7 +11,7 @@ const CommentBox = ({ author_email, blog_id }) => {
   const handleComment = (e) => {
     e.preventDefault();
     const comment = e.target.comment.value;
-    console.log(comment);
+    // console.log(comment);
     const commentData = {
       blog_id,
       user_name: user.displayName,

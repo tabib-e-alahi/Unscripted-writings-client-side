@@ -16,6 +16,7 @@
     "@heroicons/react": "^2.0.18",
     "@mui/joy": "^5.0.0-beta.14",
     "@mui/material": "^5.14.17",
+    "@mui/x-data-grid": "^6.18.1",
     "axios": "^1.6.0",
     "date-fns": "^2.30.0",
     "firebase": "^10.5.2",

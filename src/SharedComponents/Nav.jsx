@@ -28,7 +28,7 @@ const Nav = () => {
               Add Blog
             </li>
           </NavLink>
-          <NavLink to="/featuredList">
+          <NavLink to="/featured">
             <li className="lg:text-base lg:mr-10" href="#">
               Featured Blogs
             </li>

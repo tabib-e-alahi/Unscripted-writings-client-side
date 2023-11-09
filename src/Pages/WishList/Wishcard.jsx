@@ -5,20 +5,7 @@ import Swal from "sweetalert2";
 
 const Wishcard = ({ wish ,wishData, setWishData}) => {
 
-//   const { _id, title, category } = wish;
-//   console.log(_id);
 
-//   if (wish === null) {
-//     return (
-//       <div className="max-w-4xl mx-auto">
-//         <Skeleton variant="rectangular" width={910} height={900} />;
-//       </div>
-//     );
-//   }
-
-//   if (Object.keys(wish).length === 0) {
-//     return <div>Blog not found or an error occurred.</div>;
-//   }
   const handleRemove = () => {
     fetch(`http://localhost:5000/wish/${wish._id}`, {
       method: "DELETE",
@@ -57,7 +44,7 @@ const Wishcard = ({ wish ,wishData, setWishData}) => {
 Wishcard.propTypes = {
     wish: PropTypes.object,
     wishData: PropTypes.array,
-    setWishData: PropTypes.array,
+    setWishData: PropTypes.func,
 };
 
 export default Wishcard;

@@ -9,7 +9,7 @@ const WishList = () => {
     const {user} =  useContext(AuthContext);
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/wishlist?email=${user.email}`)
+        fetch(`http://localhost:5000/wishlist?email=${user?.email}`)
         .then(res =>res.json())
         .then(data => setWishData(data))
     },[user.email])
